@@ -9,7 +9,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN)
 // Set the bot response
 bot.on('text', ({
     replyWithHTML
-}) => replyWithHTML('<b>Приветули</b>'))
+}) => replyWithHTML('<b>Прива!</b>'))
 
 // Set telegram webhook
 // npm install -g localtunnel && lt --port 3000
