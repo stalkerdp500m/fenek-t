@@ -19,6 +19,6 @@ const app = express()
 app.get('/', (req, res) => res.send('Hello World!'))
 // Set the bot API endpoint
 app.use(bot.webhookCallback('/'))
-app.listen(3001, () => {
-    console.log('Example app listening on port 3000!')
-})
+app.listen(3050, () => {
+    console.log('Example app listening on port 3050!')
+});
