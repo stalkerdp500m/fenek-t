@@ -2,23 +2,23 @@ require('dotenv').config({
     path: `${__dirname}/.env`
 })
 
-
 const Telegraf = require('telegraf')
-
-
-const Extra = require('telegraf/extra')
-const Markup = require('telegraf/markup')
-
-const keyboard = Markup.inlineKeyboard([
-    Markup.urlButton('❤️', 'http://telegraf.js.org'),
-    Markup.callbackButton('Delete', 'delete')
-])
+const express = require('express')
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
-bot.start((ctx) => ctx.reply('Hello'))
-bot.help((ctx) => ctx.reply('Help message'))
-bot.on('message', (ctx) => ctx.telegram.sendCopy(ctx.chat.id, ctx.message, Extra.markup(keyboard)))
-bot.action('delete', ({
-    deleteMessage
-}) => deleteMessage())
-bot.launch()
+// Set the bot response
+bot.on('text', ({
+    replyWithHTML
+}) => replyWithHTML('<b>Hello</b>'))
+
+// Set telegram webhook
+// npm install -g localtunnel && lt --port 3000
+bot.telegram.setWebhook('https://t.fenek.fun')
+
+const app = express()
+app.get('/', (req, res) => res.send('Hello World!'))
+// Set the bot API endpoint
+app.use(bot.webhookCallback('/'))
+app.listen(3001, () => {
+    console.log('Example app listening on port 3000!')
+})
