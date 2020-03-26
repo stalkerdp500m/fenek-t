@@ -18,7 +18,9 @@
 .env.test.local
 .env.production.local
 .env
+process.yml
 sftp.json
+ecosystem.config.js
 
 
 npm-debug.log*
